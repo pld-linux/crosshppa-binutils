@@ -10,7 +10,7 @@ Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.bz2
-# Source0-md5:	b5b1608f7308c487c0f3af8e4592a71a
+# Source0-md5:	0d64d65d33a7f305e5ef8351086b9a3a
 URL:		http://sources.redhat.com/binutils/
 BuildRequires:	automake
 BuildRequires:	bash

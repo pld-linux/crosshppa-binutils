@@ -5,7 +5,7 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla HP Parisc - binutils
 Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - HP Parisc binutils
 Summary(tr):	GNU geliþtirme araçlarý - HP Parisc binutils
 Name:		crosshppa-binutils
-Version:	2.14.90.0.7
+Version:	2.15.91.0.1
 Release:	1
 License:	GPL
 Group:		Development/Tools

@@ -11,12 +11,11 @@ License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.bz2
 # Source0-md5:	b5b1608f7308c487c0f3af8e4592a71a
-URL:		http://sourceware.cygnus.com/binutils/
-Prereq:		/sbin/ldconfig
-BuildRequires:	flex
-BuildRequires:	bison
-BuildRequires:	perl-devel
+URL:		http://sources.redhat.com/binutils/
 BuildRequires:	bash
+BuildRequires:	bison
+BuildRequires:	flex
+BuildRequires:	perl-devel
 %ifarch sparc sparc32
 BuildRequires:	sparc32
 %endif
@@ -66,7 +65,9 @@ sparc32 \
 	--mandir=%{_mandir} \
 	--target=%{target}
 
-%{__make} tooldir=%{_prefix} EXEEXT="" all
+%{__make} all \
+	tooldir=%{_prefix} \
+	EXEEXT=""
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -88,6 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_bindir}/%{target}-*
+%dir %{arch}
 %dir %{arch}/bin
 %attr(755,root,root) %{arch}/bin/*
 %dir %{arch}/lib

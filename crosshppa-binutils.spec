@@ -1,9 +1,9 @@
 Summary:	Cross HP Parisc GNU binary utility development utilities - binutils
-Summary(es):	Utilitarios para desarrollo de binarios de la GNU - HP Parisc binutils
-Summary(fr):	Utilitaires de développement binaire de GNU - HP Parisc binutils
-Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla HP Parisc - binutils
-Summary(pt_BR):	Utilitários para desenvolvimento de binários da GNU - HP Parisc binutils
-Summary(tr):	GNU geliştirme araçları - HP Parisc binutils
+Summary(es.UTF-8):   Utilitarios para desarrollo de binarios de la GNU - HP Parisc binutils
+Summary(fr.UTF-8):   Utilitaires de dÃ©veloppement binaire de GNU - HP Parisc binutils
+Summary(pl.UTF-8):   SkroÅ›ne narzÄ™dzia programistyczne GNU dla HP Parisc - binutils
+Summary(pt_BR.UTF-8):   UtilitÃ¡rios para desenvolvimento de binÃ¡rios da GNU - HP Parisc binutils
+Summary(tr.UTF-8):   GNU geliÅŸtirme araÃ§larÄ± - HP Parisc binutils
 Name:		crosshppa-binutils
 Version:	2.15.91.0.1
 Release:	1
@@ -41,13 +41,13 @@ Binutils is a collection of binary utilities, including:
 
 This package contains the cross version for HP Parisc.
 
-%description -l pl
-Pakiet binutils zawiera zestaw narzêdzi umo¿liwiaj±cych kompilacjê
-programów. Znajduj± siê tutaj miêdzy innymi assembler, konsolidator
-(linker), a tak¿e inne narzêdzia do manipulowania binarnymi plikami
-programów i bibliotek.
+%description -l pl.UTF-8
+Pakiet binutils zawiera zestaw narzÄ™dzi umoÅ¼liwiajÄ…cych kompilacjÄ™
+programÃ³w. ZnajdujÄ… siÄ™ tutaj miÄ™dzy innymi assembler, konsolidator
+(linker), a takÅ¼e inne narzÄ™dzia do manipulowania binarnymi plikami
+programÃ³w i bibliotek.
 
-Ten pakiet zawiera wersjê skro¶n± generuj±c± kod dla HP Parisc
+Ten pakiet zawiera wersjÄ™ skroÅ›nÄ… generujÄ…cÄ… kod dla HP Parisc
 
 %prep
 %setup -q -n binutils-%{version}

@@ -6,7 +6,7 @@ Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - HP
 Summary(tr.UTF-8):	GNU geliştirme araçları - HP Parisc binutils
 Name:		crosshppa-binutils
 Version:	2.15.91.0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.bz2

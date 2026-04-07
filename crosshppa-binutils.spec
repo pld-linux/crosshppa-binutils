@@ -22,7 +22,7 @@ BuildRequires:	xxHash-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		target		hppa-linux
+%define		target		hppa-pld-linux
 %define		arch		%{_prefix}/%{target}
 
 %description

@@ -5,24 +5,24 @@ Summary(pl.UTF-8):	Skrośne narzędzia programistyczne GNU dla HP Parisc - binut
 Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - HP Parisc binutils
 Summary(tr.UTF-8):	GNU geliştirme araçları - HP Parisc binutils
 Name:		crosshppa-binutils
-Version:	2.15.91.0.1
-Release:	2
-License:	GPL
+Version:	2.46
+Release:	1
+License:	GPL v3+
 Group:		Development/Tools
-Source0:	ftp://ftp.kernel.org/pub/linux/devel/binutils/binutils-%{version}.tar.bz2
-# Source0-md5:	0d64d65d33a7f305e5ef8351086b9a3a
+Source0:	https://ftp.gnu.org/gnu/binutils/binutils-with-gold-%{version}.tar.lz
+# Source0-md5:	e221b6201b7234e3e7733e878ff476c4
 URL:		http://sources.redhat.com/binutils/
 BuildRequires:	automake
 BuildRequires:	bash
 BuildRequires:	bison
 BuildRequires:	flex
-BuildRequires:	gettext-tools
-%ifarch sparc sparc32
-BuildRequires:	sparc32
-%endif
+BuildRequires:	lzip
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xxHash-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		target		hppa-pld-linux
+%define		target		hppa-linux
 %define		arch		%{_prefix}/%{target}
 
 %description
@@ -47,28 +47,32 @@ programów. Znajdują się tutaj między innymi assembler, konsolidator
 (linker), a także inne narzędzia do manipulowania binarnymi plikami
 programów i bibliotek.
 
-Ten pakiet zawiera wersję skrośną generującą kod dla HP Parisc
+Ten pakiet zawiera wersję skrośną generującą kod dla HP Parisc.
 
 %prep
-%setup -q -n binutils-%{version}
+%setup -q -n binutils-with-gold-%{version}
 
 %build
-cp /usr/share/automake/config.sub .
 
 # ldscripts won't be generated properly if SHELL is not bash...
-CFLAGS="%{rpmcflags}" \
+CFLAGS="%{rpmcflags} -fno-strict-aliasing" \
 LDFLAGS="%{rpmldflags}" \
 CONFIG_SHELL="/bin/bash" \
-%ifarch sparc
-sparc32 \
-%endif
 ./configure \
 	--disable-shared \
+	--disable-silent-rules \
+	--disable-nls \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
 	--mandir=%{_mandir} \
 	--infodir=%{_infodir} \
-	--target=%{target}
+	--target=%{target} \
+	--with-sysroot=%{_libdir}/%{target} \
+	--with-debuginfod=no \
+	--with-msgpack=no \
+	--with-system-zlib \
+	--with-zstd=no \
+	--disable-jansson
 
 %{__make} all \
 	tooldir=%{_prefix} \

@@ -6,7 +6,7 @@ Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - HP
 Summary(tr.UTF-8):	GNU geliştirme araçları - HP Parisc binutils
 Name:		crosshppa-binutils
 Version:	2.46
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	https://ftp.gnu.org/gnu/binutils/binutils-with-gold-%{version}.tar.lz
@@ -53,19 +53,13 @@ Ten pakiet zawiera wersję skrośną generującą kod dla HP Parisc.
 %setup -q -n binutils-with-gold-%{version}
 
 %build
-
 # ldscripts won't be generated properly if SHELL is not bash...
-CFLAGS="%{rpmcflags} -fno-strict-aliasing" \
-LDFLAGS="%{rpmldflags}" \
-CONFIG_SHELL="/bin/bash" \
-./configure \
+export CFLAGS="%{rpmcflags} -fno-strict-aliasing"
+export CONFIG_SHELL="/bin/bash"
+%configure \
 	--disable-shared \
 	--disable-silent-rules \
 	--disable-nls \
-	--prefix=%{_prefix} \
-	--libdir=%{_libdir} \
-	--mandir=%{_mandir} \
-	--infodir=%{_infodir} \
 	--target=%{target} \
 	--with-sysroot=%{_libdir}/%{target} \
 	--with-debuginfod=no \
@@ -80,13 +74,9 @@ CONFIG_SHELL="/bin/bash" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}
 
 %{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	mandir=$RPM_BUILD_ROOT%{_mandir} \
-	infodir=$RPM_BUILD_ROOT%{_infodir} \
-	libdir=$RPM_BUILD_ROOT%{_libdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 # remove these man pages unless we cross-build for win*/netware platforms.
 # however, this should be done in Makefiles.
